@@ -1,5 +1,5 @@
 // TODO Task 5: (Hard)
-// TODO For each employee their current salary is calculated by multiplying yearly increment with experience then adding the result to the starting salary. Now calculate is the total salary has to be provided by the company in a month.
+// TODO For each employee their current salary is calculateSalariesd by multiplying yearly increment with experience then adding the result to the starting salary. Now calculateSalaries is the total salary has to be provided by the company in a month.
 
 const employees = [
     { name: "Shahin", experience: 5, starting: 20000, increment: 5000 },
@@ -9,30 +9,17 @@ const employees = [
 ];
 
 
-function generator(employees){
+function calculateSalaries(employees){
     let msg = "Company Total Expense: ";
     let store = 0;
     for(let item of employees){
-        if(item.experience !== 0){
-            let info = ("Name : "+item.name+" - "+"Experience : "+item.experience+" - "+"Starting : "+item.starting+" - "+"Increment Per Month : "+item.increment+" - "+"Current Salary : "+item.starting*item.experience);
-            
-            console.log(info);
-        }else{
-            let info = ("Name : "+item.name+" - "+"Experience : "+item.experience+" - "+"Starting : "+item.starting+" - "+"Increment Per Month : "+item.increment+" - "+"Current Salary : "+item.starting);
-
-            console.log(info);
-        }
-        if(item.starting > 0){
-            if(item.experience === 0){
-                store += item.starting;
-            }else{
-                store += item.starting * item.experience;
-            }
-        }
-        
+        let current = (item.experience * item.increment)+item.starting;
+        let info = ("Name : "+item.name+" - "+"Experience : "+item.experience+" - "+"Starting : "+item.starting+" - "+"Increment Per Month : "+item.increment+" - "+"Current Salary : "+current);
+        console.log(info);
+        store += current;
     }
     return msg + store;
 }
 
-let result = generator(employees);
+let result = calculateSalaries(employees);
 console.log(result);
